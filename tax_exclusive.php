@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto mt-5">
-            <h2 class="text-center">Tax Calculator</h2>
+            <h2 class="text-center">Tax Calculator - Exclusive</h2>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                 <div class="form-group">
                     <label for="value">Enter a value:</label>
@@ -25,42 +25,25 @@
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $value = $_POST['value'];
+                include 'tax_include.php';
                 $taxComponents = calculateTaxComponents($value);
                 echo '<h4 class="mt-4">Tax Components for ' . $value . ':</h4>';
                 echo '<table class="table table-striped">';
                 echo '<thead><tr><th>Tax Component</th><th>Amount</th></tr></thead>';
                 echo '<tbody>';
                 echo '<tr><td>NHIL 2.5%</td><td>' . $taxComponents['tax2Point5Percent'] . '</td></tr>';
-                echo '<tr><td>GETFL 2.5% (2)</td><td>' . $taxComponents['tax2Point5Percent2'] . '</td></tr>';
+                echo '<tr><td>GETFL 2.5%</td><td>' . $taxComponents['tax2Point5Percent2'] . '</td></tr>';
                 echo '<tr><td>CHRL 1%</td><td>' . $taxComponents['tax1Percent'] . '</td></tr>';
                 echo '<tr><td>Value Added Tax</td><td>' . $taxComponents['valueAddedTax'] . '</td></tr>';
-                echo '<tr><td>Withholding Tax</td><td>' . $taxComponents['withholdingTax'] . '</td></tr>';
+                echo '<tr><td>Withholding Tax (Goods)</td><td>' . $taxComponents['withholdingTaxGoods'] . '</td></tr>';
+                echo '<tr><td>Withholding Tax (Services)</td><td>' . $taxComponents['withholdingTaxServices'] . '</td></tr>';
                 echo '<tr><td>Total Tax</td><td>' . $taxComponents['totalTax'] . '</td></tr>';
                 echo '<tr><td>Total Invoice</td><td>' . $taxComponents['totalInvoice'] . '</td></tr>';
-                echo '</tbody></table>';
-            }
-
-            function calculateTaxComponents($value) {
-                $tax1Percent = $value * 0.01;
-                $tax2Point5Percent = $value * 0.025;
-                $tax2Point5Percent2 = $value * 0.025;
-                $valueAddedTax = ($value + $tax1Percent + $tax2Point5Percent + $tax2Point5Percent2) * 0.15;
-                $withholdingTax = $value * 0.075;
-                $totalTax = $tax1Percent + $tax2Point5Percent + $tax2Point5Percent2 + $valueAddedTax;
-                $totalInvoice = $value + $totalTax;
-
-                return [
-                    'tax1Percent' => $tax1Percent,
-                    'tax2Point5Percent' => $tax2Point5Percent,
-                    'tax2Point5Percent2' => $tax2Point5Percent2,
-                    'valueAddedTax' => $valueAddedTax,
-                    'withholdingTax' => $withholdingTax,
-                    'totalTax' => $totalTax,
-                    'totalInvoice' => $totalInvoice
-                ];
+                echo '</tbody><tfoot><tr><th>Total Tax</th><th>' . $taxComponents['totalTax'] . '</th></tr></tfoot></table>';
             }
 
             ?>
+            <button type="submit">Save</button>
         </div>
     </div>
 </div>
