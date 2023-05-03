@@ -8,3 +8,25 @@ This project is a collection of single page applications designed to facilitate 
 - Inclusive Tax Calculator: tax_inclusive.php
 - Exclusive Tax Calculator: tax_exclusive.php
 - Retrieve Saved Records: records.php
+
+## Installation
+1. Run a PHP server on the root directory
+2. All data is stored locally, so no separate database configuration.
+3. Open index.php
+
+## Usage
+Enter the value in the box provided. Click on calculate to get your values.
+The Save button will store all records in a special database.
+
+## Contributions
+Contact the author and send your feedback
+
+## Credits
+Nana Yaa, the accountant supremo who explained the basic taxation ideas
+ChatGPT, my able partner through the entire development phase
+
+## License
+Open-source and free to use
+
+## Contact
+Just shoot a direct message
