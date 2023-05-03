@@ -40,10 +40,34 @@
                 echo '<tr><td>Total Tax</td><td>' . $taxComponents['totalTax'] . '</td></tr>';
                 echo '<tr><td>Total Invoice</td><td>' . $taxComponents['totalInvoice'] . '</td></tr>';
                 echo '</tbody><tfoot><tr><th>Total Tax</th><th>' . $taxComponents['totalTax'] . '</th></tr></tfoot></table>';
+
+                echo '<button type="submit" name="save" class="btn btn-primary mt-3">Save</button>';
+
+                if (isset($_POST['save'])) {
+                    try {
+
+                        $db = new PDO('sqlite:tax_data.sqlite');
+                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $stmt = $db->prepare('INSERT INTO tax_components_exclusive (value, principal, nhil, getfl, chrl, vatable_amt, vat, total_tax, withholdingTaxGoods, withholdingTaxServices, totalInvoice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                        $stmt->bindValue(1, $value, SQLITE3_FLOAT);
+                        $stmt->bindValue(2, $taxComponents['totalInvoice'], SQLITE3_FLOAT);
+                        $stmt->bindValue(3, $taxComponents['nhil'], SQLITE3_FLOAT);
+                        $stmt->bindValue(4, $taxComponents['getfl'], SQLITE3_FLOAT);
+                        $stmt->bindValue(5, $taxComponents['chrl'], SQLITE3_FLOAT);
+                        $stmt->bindValue(6, $taxComponents['vatableAmt'], SQLITE3_FLOAT);
+                        $stmt->bindValue(7, $taxComponents['vat'], SQLITE3_FLOAT);
+                        $stmt->bindValue(8, $taxComponents['totalTax'], SQLITE3_FLOAT);
+                        $stmt->bindValue(9, $taxComponents['withholdingGoods'], SQLITE3_FLOAT);
+                        $stmt->bindValue(10, $taxComponents['withholdingServices'], SQLITE3_FLOAT);
+                        $stmt->execute();
+                        echo '<p class="mt-3 text-success">Tax components saved successfully!</p>';
+                    } catch (PDOException $e) {
+                        echo '<p class="mt-3 text-danger">Error: ' . $e->getMessage() . '</p>';
+                    }
+                }
             }
 
             ?>
-            <button type="submit">Save</button>
         </div>
     </div>
 </div>
