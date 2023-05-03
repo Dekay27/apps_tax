@@ -76,6 +76,8 @@ function saveToDatabase($dataArray) {
 
         $db->query("INSERT INTO tax_inclusive (principal, nhil, getfl, chrl, vatable_amt, vat, total_tax, withholding_goods, withholding_services) 
                     VALUES ('$principal', '$nhil', '$getfl', '$chrl', '$vatable_amt', '$vat', '$total_tax', '$withholding_goods', '$withholding_services')");
+
+        $db->close();
     }
 }
 

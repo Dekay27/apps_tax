@@ -22,17 +22,10 @@
                 include 'tax_include.php';
 
                 $amount = $_POST["amount"];
-                // Open SQLite database
-                $db = new SQLite3('data.sqlite');
 
                 // Loop through data and insert into database
                 $result = calculateTaxes($amount);
                 saveToDatabase($result);
-
-
-                // Close database connection
-                $db->close();
-
 
                 // Display values
                 if (is_numeric($amount)) {
@@ -95,25 +88,6 @@
         </div>
     </div>
 
-    <?php
-
-
-    // Open SQLite database
-    $db = new SQLite3('data.sqlite');
-
-    // Loop through data and insert into database
-    foreach ($data as $row) {
-        $id = $row['id'];
-        $name = $row['name'];
-        $email = $row['email'];
-        $db->query("INSERT INTO users (id, name, email) VALUES ('$id', '$name', '$email')");
-    }
-
-    // Close database connection
-    $db->close();
-
-
-    ?>
 
 
 </div>
