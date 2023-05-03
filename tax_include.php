@@ -24,5 +24,5 @@ function calculateTaxes($value) {
     );
 }
 
-
+//php -S localhost:8000
 ?>
