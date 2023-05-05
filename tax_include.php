@@ -82,5 +82,20 @@ function saveToDatabase($dataArray) {
 }
 
 
+$taxes = array(
+
+    $taxableSupply,
+    nhil25,
+    getfl25,
+    chrl10,
+    vatableAmount,
+    vat125,
+    totalInvoiceAmount,
+    totalTaxAmount,
+    withholdingGoods,
+    $withholdingServices
+
+);
+
 //php -S localhost:8000
 ?>
