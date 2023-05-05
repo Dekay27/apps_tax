@@ -20,7 +20,7 @@
                     <label for="value">Enter a value:</label>
                     <input type="number" class="form-control" id="value" name="value" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Calculate</button>
+                <button type="submit" name="save" class="btn btn-primary">Calculate</button>
             </form>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
