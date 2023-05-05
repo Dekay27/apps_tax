@@ -55,11 +55,11 @@
                         $stmt->bindValue(3, $taxComponents['nhil'], SQLITE3_FLOAT);
                         $stmt->bindValue(4, $taxComponents['getfl'], SQLITE3_FLOAT);
                         $stmt->bindValue(5, $taxComponents['chrl'], SQLITE3_FLOAT);
-                        $stmt->bindValue(6, $taxComponents['vatableAmt'], SQLITE3_FLOAT);
+                        $stmt->bindValue(6, $taxComponents['vatable_amt'], SQLITE3_FLOAT);
                         $stmt->bindValue(7, $taxComponents['vat'], SQLITE3_FLOAT);
-                        $stmt->bindValue(8, $taxComponents['totalTax'], SQLITE3_FLOAT);
-                        $stmt->bindValue(9, $taxComponents['withholdingGoods'], SQLITE3_FLOAT);
-                        $stmt->bindValue(10, $taxComponents['withholdingServices'], SQLITE3_FLOAT);
+                        $stmt->bindValue(8, $taxComponents['total_tax'], SQLITE3_FLOAT);
+                        $stmt->bindValue(9, $taxComponents['withholding_goods'], SQLITE3_FLOAT);
+                        $stmt->bindValue(10, $taxComponents['withholding_services'], SQLITE3_FLOAT);
                         $stmt->execute();
                         echo '<p class="mt-3 text-success">Tax components saved successfully!</p>';
                     } catch (PDOException $e) {
