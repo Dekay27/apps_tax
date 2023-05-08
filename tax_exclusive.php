@@ -13,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.php">
-        <img src="images/tax.png" width="30" height="30" alt="">
+        <img src="images/tax.png" width="64" height="64" alt="">
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -73,7 +73,7 @@
 
                         $db = new PDO('sqlite:tax_data.sqlite');
                         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $stmt = $db->prepare('INSERT INTO tax_components_exclusive (value, principal, nhil, getfl, chrl, vatable_amt, vat, total_tax, withholdingTaxGoods, withholdingTaxServices, totalInvoice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                        $stmt = $db->prepare('INSERT INTO tax_components_exclusive (value, principal, nhil, getfl, chrl, vatable_amt, vat, total_tax, withholdingTaxGoods, withholdingTaxServices, totalInvoice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
                         $stmt->bindValue(1, $value, SQLITE3_FLOAT);
                         $stmt->bindValue(2, $taxComponents['totalInvoice'], SQLITE3_FLOAT);
                         $stmt->bindValue(3, $taxComponents['nhil'], SQLITE3_FLOAT);
@@ -84,6 +84,7 @@
                         $stmt->bindValue(8, $taxComponents['totalTax'], SQLITE3_FLOAT);
                         $stmt->bindValue(9, $taxComponents['withholdingGoods'], SQLITE3_FLOAT);
                         $stmt->bindValue(10, $taxComponents['withholdingServices'], SQLITE3_FLOAT);
+                        $stmt->bindValue(11, $taxComponents['totalInvoice'], SQLITE3_FLOAT);
                         $stmt->execute();
                         echo '<p class="mt-3 text-success">Tax components saved successfully!</p>';
                     } catch (PDOException $e) {
