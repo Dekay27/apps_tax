@@ -81,7 +81,7 @@ function saveToDatabase($dataArray) {
     }
 }
 
-
+/*
 $taxes = array(
 
     $taxableSupply,
@@ -96,6 +96,7 @@ $taxes = array(
     $withholdingServices
 
 );
+*/
 
 //php -S localhost:8000
 ?>
