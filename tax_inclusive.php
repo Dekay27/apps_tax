@@ -13,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.php">
-        <img src="images/tax.png" width="30" height="30" alt="">
+        <img src="images/tax.png" width="32" height="32" alt="">
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
